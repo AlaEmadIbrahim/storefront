@@ -2,6 +2,7 @@ const initialState = {
   categories: [
     { name: "MenPerfume", displayName: "MenPerfume" },
     { name: "WomenPerfume", displayName: "WomenPerfume" },
+    { name: "UnisexPerfume", displayName: "UnisexPerfume" },
   ],
   activeCategory: "MenPerfume",
 };
