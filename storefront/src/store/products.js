@@ -170,6 +170,16 @@ const initialState = [
     image:
       "https://www.bigbuy.eu/2905807-product_card/unisex-perfume-xerjoff-edp-v-erba-pura-50-ml_663701.jpg",
   },
+  {
+    id: 18,
+    name: "BlackXS",
+    category: "WomenPerfume",
+    price: 25.0,
+    inStock: 100,
+    inCart: 1,
+    image:
+      "https://static.beautytocare.com/media/catalog/product/cache/global/image/1300x1300/85e4522595efc69f496374d01ef2bf13/p/a/paco-rabanne-black-xs-for-women-eau-de-parfum-80ml.jpg",
+  },
 ];
 
 const reducer = (state = initialState, action) => {
