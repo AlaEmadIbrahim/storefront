@@ -19,7 +19,19 @@ const cartReducer = (state = initialState, action) => {
         state.cartItems.push(payload);
         state.totalCartItems += 1;
       }
-      return state;
+      return { ...state };
+
+    case "REMOVE_FROM_CART":
+      const updatedCartItems = state.cartItems.filter(
+        (item) => item.name !== payload.name
+      );
+      const updatedTotalCartItems = state.totalCartItems - 1;
+      return {
+        ...state,
+        cartItems: updatedCartItems,
+        totalCartItems: updatedTotalCartItems,
+      };
+
     default:
       return state;
   }
@@ -30,6 +42,13 @@ export default cartReducer;
 export const addToCart = (product) => {
   return {
     type: "addToCart",
+    payload: product,
+  };
+};
+
+export const removeFromCart = (product) => {
+  return {
+    type: "REMOVE_FROM_CART",
     payload: product,
   };
 };
