@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import { CardHeader } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import { addToCart } from "../store/cart.js";
+import { addToCart, removeFromCart } from "../store/cart"; 
 import { connect } from "react-redux";
 import "./Products.css";
 
@@ -17,9 +17,18 @@ function Products(props) {
           🛒 Cart ({props.cart.totalCartItems})
         </Button>
         {props.cart.cartItems.map((cartItem) => (
-          <p key={cartItem.name}>
+          <div key={cartItem.name}>
             <strong>{cartItem.name}:</strong> {cartItem.inCart} pc(s)
-          </p>
+            <Button
+              variant="contained"
+              color="secondary" 
+              onClick={() => {
+                props.removeFromCart(cartItem); 
+              }}
+            >
+              Remove
+            </Button>
+          </div>
         ))}
       </section>
 
@@ -55,7 +64,7 @@ function Products(props) {
                 />
                 <Button
                   variant="contained"
-                  style={{ backgroundColor: "#1e2a38", color: "#fff" }} 
+                  style={{ backgroundColor: "#1e2a38", color: "#fff" }}
                   className="add-to-cart-button"
                   onClick={() => {
                     props.addToCart(product);
@@ -80,6 +89,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = { addToCart };
+const mapDispatchToProps = { addToCart, removeFromCart }; 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
