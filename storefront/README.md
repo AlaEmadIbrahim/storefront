@@ -2,11 +2,15 @@
 
 ## Men perfume category>>
 
-![uml](./assets/Men.PNG)
+![uml](./assets/man.PNG)
 
 ## Women perfume category>>
 
 ![uml](./assets/women.PNG)
+
+## Unisex perfume category>>
+
+![uml](./assets/unisex.PNG)
 
 ## UML Diagram>>
 
