@@ -6,44 +6,61 @@ const initialState = {
 const cartReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case "addToCart":
-      let exists = false;
-      for (let i = 0; i < state.cartItems.length; i++) {
-        if (state.cartItems[i].name === payload.name) {
-          exists = true;
-          state.cartItems[i].inCart += 1;
-          state.totalCartItems += 1;
-        }
+    case "ADD_TO_CART":
+      const existingItemIndex = state.cartItems.findIndex(
+        (item) => item.name === payload.name
+      );
+
+      if (existingItemIndex !== -1) {
+        const updatedCartItems = [...state.cartItems];
+        updatedCartItems[existingItemIndex].inCart += 1;
+
+        return {
+          ...state,
+          cartItems: updatedCartItems,
+          totalCartItems: state.totalCartItems + 1,
+        };
+      } else {
+        return {
+          ...state,
+          cartItems: [...state.cartItems, payload],
+          totalCartItems: state.totalCartItems + 1,
+        };
       }
-      if (!exists) {
-        state.cartItems.push(payload);
-        state.totalCartItems += 1;
-      }
-      return { ...state };
 
     case "REMOVE_FROM_CART":
-      const updatedCartItems = state.cartItems.filter(
-        (item) => item.name !== payload.name
+      const existingItem = state.cartItems.find(
+        (item) => item.name === payload.name
       );
-      const updatedTotalCartItems = state.totalCartItems - 1;
-      return {
-        ...state,
-        cartItems: updatedCartItems,
-        totalCartItems: updatedTotalCartItems,
-      };
+
+      if (existingItem && existingItem.inCart > 1) {
+        const updatedCartItems = state.cartItems.map((item) => {
+          if (item.name === payload.name) {
+            return { ...item, inCart: item.inCart - 1 };
+          }
+          return item;
+        });
+
+        return {
+          ...state,
+          cartItems: updatedCartItems,
+          totalCartItems: state.totalCartItems - 1,
+        };
+      } else {
+        const updatedCartItems = state.cartItems.filter(
+          (item) => item.name !== payload.name
+        );
+
+        return {
+          ...state,
+          cartItems: updatedCartItems,
+          totalCartItems: state.totalCartItems - 1,
+        };
+      }
 
     default:
       return state;
   }
-};
-
-export default cartReducer;
-
-export const addToCart = (product) => {
-  return {
-    type: "addToCart",
-    payload: product,
-  };
 };
 
 export const removeFromCart = (product) => {
@@ -52,3 +69,12 @@ export const removeFromCart = (product) => {
     payload: product,
   };
 };
+
+export const addToCart = (product) => {
+  return {
+    type: "ADD_TO_CART",
+    payload: product,
+  };
+};
+
+export default cartReducer;
