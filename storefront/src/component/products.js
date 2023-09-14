@@ -21,9 +21,9 @@ function Products(props) {
             <strong>{cartItem.name}:</strong> {cartItem.inCart} pc(s)
             <Button
               variant="contained"
-              color="secondary" 
+              color="secondary"
               onClick={() => {
-                props.removeFromCart(cartItem); 
+                props.removeFromCart(cartItem);
               }}
             >
               Remove
@@ -60,6 +60,11 @@ function Products(props) {
 
                 <CardHeader
                   title={"Price  " + product.price + "JD"}
+                  subheader={
+                    <span className="stock-info">
+                      In Stock {product.inStock} Pcs
+                    </span>
+                  }
                   className="product-price"
                 />
                 <Button

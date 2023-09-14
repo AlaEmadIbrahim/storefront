@@ -88,3 +88,10 @@
     color: white;
     font-weight: bold;
   }
+
+  .stock-info {
+    color: #ff5722; 
+    font-weight: bold;
+    font-size: 22px; 
+  }
+  

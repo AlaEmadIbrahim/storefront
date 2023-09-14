@@ -185,14 +185,26 @@ const initialState = [
 const reducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case "addToCart":
+    case "ADD_TO_CART":
       return state.map((product) => {
-        if (product.name === payload.name) {
+        if (product.name === payload.name && product.inStock > 0) {
           return { ...product, inStock: product.inStock - 1 };
         } else {
           return product;
         }
       });
+
+    case "REMOVE_FROM_CART":
+      return state.map((product) => {
+        if (product.name === payload.name) {
+          return { ...product, inStock: product.inStock + 1 };
+        } else {
+          return product;
+        }
+      });
+
+    // Add more cases for other actions if needed...
+
     default:
       return state;
   }
