@@ -1,8 +1,16 @@
+import request from "superagent";
+
 export const getRemoteData = () => {
   return async (dispatch) => {
-    const raw = await fetch("https://midproject.onrender.com/users");
-    const results = await raw.json();
-    dispatch(loadProducts(results.results));
+    try {
+      const response = await request.get(
+        "https://jsonplaceholder.typicode.com/products"
+      );
+      const products = response.body;
+      dispatch(loadProducts(products));
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 };
 
