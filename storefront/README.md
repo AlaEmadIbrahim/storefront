@@ -2,7 +2,7 @@
 
 ## Deploy link
 
-### https://guileless-puppy-e1c01a.netlify.app
+### https://resonant-custard-742bed.netlify.app/
 
 ## Men perfume category>>
 
