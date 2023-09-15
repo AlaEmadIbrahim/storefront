@@ -185,6 +185,9 @@ const initialState = [
 const reducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case "LOAD_PRODUCTS":
+      return payload;
+
     case "ADD_TO_CART":
       return state.map((product) => {
         if (product.name === payload.name && product.inStock > 0) {
@@ -202,8 +205,6 @@ const reducer = (state = initialState, action) => {
           return product;
         }
       });
-
-    // Add more cases for other actions if needed...
 
     default:
       return state;

@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import { CardHeader } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import { addToCart, removeFromCart } from "../store/cart"; 
+import { addToCart, removeFromCart } from "../store/cart";
 import { connect } from "react-redux";
 import "./Products.css";
 
@@ -94,6 +94,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = { addToCart, removeFromCart }; 
+const mapDispatchToProps = { addToCart, removeFromCart };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
