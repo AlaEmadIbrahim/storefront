@@ -4,7 +4,7 @@ const initialState = [
     name: "ARMANI",
     category: "MenPerfume",
     price: 70.0,
-    inStock: 20,
+    inStock: 100,
     inCart: 1,
     image:
       "https://www.armani.com/variants/images/38063312420501042/F/w400.jpg",
@@ -24,7 +24,7 @@ const initialState = [
     name: "MEGAMARE",
     category: "MenPerfume",
     price: 130.0,
-    inStock: 40,
+    inStock: 100,
     inCart: 1,
     image:
       "https://www.magmaprofumi.com/27379-home_default/orto-parisi-megamare-parfum.jpg",
@@ -34,7 +34,7 @@ const initialState = [
     name: "BOSS",
     category: "MenPerfume",
     price: 50.0,
-    inStock: 50,
+    inStock: 100,
     inCart: 1,
     image:
       "https://www.luluhypermarket.com/cdn-cgi/image/f=auto/medias/700501-01.jpg-1200Wx1200H?context=bWFzdGVyfGltYWdlc3w1NjU2NTh8aW1hZ2UvanBlZ3xhVzFoWjJWekwyZzNOaTlvWWpJdk9URXhNemN4TWpZMU5qUXhOQzVxY0djfDExMDE2ZDQxNGE4OTJlOTA5NDM0ODgyNmMzNzcyZDlhNGUzZGFjODdlOGFjYzJhM2VmMWM3Y2EyMGQ4OGJjMTU",
