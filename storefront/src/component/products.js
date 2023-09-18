@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import { CardHeader } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
@@ -6,9 +6,15 @@ import Button from "@mui/material/Button";
 import { addToCart, removeFromCart } from "../store/cart";
 import { connect } from "react-redux";
 import "./Products.css";
+import ProductDetails from "./ProductDetails";
 
 function Products(props) {
   const style = { width: "200px", height: "200px" };
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleViewDetails = (product) => {
+    setSelectedProduct(product);
+  };
 
   return (
     <div className="products-container">
@@ -69,7 +75,11 @@ function Products(props) {
                 />
                 <Button
                   variant="contained"
-                  style={{ backgroundColor: "#1e2a38", color: "#fff" }}
+                  style={{
+                    backgroundColor: "#1e2a38",
+                    color: "#fff",
+                    marginBottom: "8px", 
+                  }}
                   className="add-to-cart-button"
                   onClick={() => {
                     props.addToCart(product);
@@ -77,11 +87,31 @@ function Products(props) {
                 >
                   ADD TO CART
                 </Button>
+
+                <Button
+                  variant="contained"
+                  style={{
+                    backgroundColor: "#ff5722", 
+                    color: "#fff",
+                  }}
+                  className="view-details-button"
+                  onClick={() => {
+                    handleViewDetails(product);
+                  }}
+                >
+                  Product Details
+                </Button>
               </Card>
             ) : null
           )}
         </div>
       </section>
+      {selectedProduct && (
+        <ProductDetails
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
+      )}
     </div>
   );
 }

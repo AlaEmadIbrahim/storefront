@@ -2,11 +2,11 @@
 
 ## Deploy link
 
-### https://resonant-custard-742bed.netlify.app/
+### https://creative-snickerdoodle-44717c.netlify.app/
 
 ## Men perfume category>>
 
-![uml](./assets/man.PNG)
+![uml](./assets/full.PNG)
 
 ## Women perfume category>>
 
